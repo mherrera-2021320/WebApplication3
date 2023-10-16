@@ -1,0 +1,84 @@
+﻿@model IEnumerable<WebApplication3.Models.contratos>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.numero_seciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_inicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_final)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.costo_total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estado_contrato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.clientes.nombre_completo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.personal.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehiculos.marca)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.numero_seciones)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha_inicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha_final)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.costo_total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado_contrato)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.clientes.nombre_completo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.personal.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vehiculos.marca)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.numero_contrato }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.numero_contrato }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.numero_contrato })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

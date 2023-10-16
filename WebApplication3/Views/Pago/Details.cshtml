@@ -1,0 +1,66 @@
+﻿@model WebApplication3.Models.pagos
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>pagos</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.fecha_pago)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fecha_pago)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.monto)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.monto)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.clientes.nombre_completo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.clientes.nombre_completo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.contratos.instructor_asignado)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.contratos.instructor_asignado)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tipo_pago.nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tipo_pago.nombre)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id_pagos }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "ConfirmarEliminacion";
+}
+
+<h2>ConfirmarEliminacion</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.Advertencia))
+{
+    <div class="alert alert-warning">@ViewBag.Advertencia</div>
+}
+
+<h2>¿Estás seguro de que deseas eliminar este dato?</h2>
+<p>Esta acción no se puede deshacer.</p>
+
+@using (Html.BeginForm("Eliminar", "Controlador", new { id = Model.Id }, FormMethod.Post))
+{
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="@Url.Action("Lista", "Controlador")" class="btn btn-default">Cancelar</a>
+}

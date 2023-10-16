@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplication3.Models.operaciones>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <button class="">
+        @Html.ActionLink("Regresar", "Index", "Perfil", new { area = "" }, new { @class = "btn btn-success" })
+    </button>
+    <br />
+    <br />
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modulo.name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modulo.name)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.id })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

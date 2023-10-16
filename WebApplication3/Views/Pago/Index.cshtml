@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebApplication3.Models.pagos>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_pago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.clientes.nombre_completo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contratos.instructor_asignado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipo_pago.nombre)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha_pago)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.monto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.clientes.nombre_completo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contratos.instructor_asignado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipo_pago.nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id_pagos }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id_pagos }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id_pagos })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

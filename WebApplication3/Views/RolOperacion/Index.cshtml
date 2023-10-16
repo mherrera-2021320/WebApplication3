@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplication3.Models.rol_operacion>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <button class="">
+        @Html.ActionLink("Regresar", "Index", "Perfil", new { area = "" }, new { @class = "btn btn-success" })
+    </button>
+    <br />
+    <br />
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.operaciones.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rol.nombre)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.operaciones.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rol.nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.codigo }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.codigo }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.codigo })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

@@ -1,0 +1,97 @@
+﻿@model WebApplication3.Models.contratos
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>contratos</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.numero_seciones)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.numero_seciones)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.fecha_inicio)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fecha_inicio)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.fecha_final)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fecha_final)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.costo_total)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.costo_total)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.estado_contrato)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.estado_contrato)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.clientes.nombre_completo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.clientes.nombre_completo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.personal.nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.personal.nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.vehiculos.marca)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.vehiculos.marca)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

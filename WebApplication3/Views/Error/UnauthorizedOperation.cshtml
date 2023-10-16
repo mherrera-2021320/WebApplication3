@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "UnauthorizedOperation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>UnauthorizedOperation</h2>
+
+<section>
+    <h1>
+        Error, No tienes el permiso Necesario para entrar a la Vista
+    </h1>
+
+</section>
+
+
+
+<Section>
+    <div class="content">
+        <h2 class="headline text-red">Error</h2>
+        <div class="error-content">
+            <h3><i class="fa fa-warning text-red"></i>Sin Autorizacion</h3>
+            @if (ViewBag.operacion != "")
+            {
+                <p> Operacion @ViewBag.Operacion </p>
+            }
+            @if (ViewBag.modulo != "")
+            {
+                <p> Operacion @ViewBag.Modulo </p>
+            }
+            @if (ViewBag.msjErrorExcepcion != "")
+            {
+                <p> Operacion @ViewBag.msjErrorExcepcion </p>
+            }
+        </div>
+
+    </div>
+</Section>
+
+

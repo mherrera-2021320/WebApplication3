@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b86bcd51e25048468b6ded40897d76c7" Name="Diagram1">
+        <EntityTypeShape EntityType="SQLTestModel.clases" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.clientes" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.contratos" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.direcciones" Width="1.5" PointX="1.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.modulo" Width="1.5" PointX="1.5" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.operaciones" Width="1.5" PointX="1.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.pagos" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.personal" Width="1.5" PointX="3.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.puesto" Width="1.5" PointX="1.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.rol" Width="1.5" PointX="1.5" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.rol_operacion" Width="1.5" PointX="3.75" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.tipo_pago" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.usuario" Width="1.5" PointX="1.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLTestModel.vehiculos" Width="1.5" PointX="3.75" PointY="20" IsExpanded="true" />
+        <AssociationConnector Association="SQLTestModel.FK__clases__contrato__3DDE0E16" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__clases__contrato__3ED2324F" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__contratos__clien__3B01A16B" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__pagos__contrato___4396E76C" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__contratos__estad__391958F9" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__contratos__vehic__3A0D7D32" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__pagos__contrato___457F2FDE" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__personal__direcc__3454A3DC" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__operacion__idMod__2BBF5DDB" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__rol_opera__opera__2E9BCA86" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__pagos__nombre_pa__448B0BA5" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__personal__puesto__363CEC4E" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__personal__usuari__3548C815" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__rol_opera__rolId__2F8FEEBF" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLTestModel.FK__usuario__rolId__26FAA8BE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

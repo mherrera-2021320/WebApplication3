@@ -1,0 +1,103 @@
+﻿@model IEnumerable<WebApplication3.Models.personal>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_nacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.feche_contratacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_baja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.direcciones.calle_direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.puesto.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.usuario.nombre_completo)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha_nacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.feche_contratacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha_baja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.direcciones.calle_direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.puesto.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.usuario.nombre_completo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.dpi_empleado }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.dpi_empleado }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.dpi_empleado })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

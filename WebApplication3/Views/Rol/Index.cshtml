@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebApplication3.Models.rol>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="~/EstiloNavbar/styles.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/modernizr")
+    <title>Index</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <button class="">
+        @Html.ActionLink("Regresar", "Index", "Perfil", new { area = "" }, new { @class = "btn btn-success" })
+    </button>
+    <br />
+    <br />
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.codigo }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.codigo }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.codigo })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

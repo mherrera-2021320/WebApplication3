@@ -1,0 +1,56 @@
+﻿@model WebApplication3.Models.vehiculos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h4>vehiculos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.placas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.placas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.año)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.año)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_compra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_compra)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.placas  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

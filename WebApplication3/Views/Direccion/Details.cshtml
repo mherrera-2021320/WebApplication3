@@ -1,0 +1,92 @@
+﻿@model WebApplication3.Models.direcciones
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h4>direcciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numero_casa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numero_casa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.calle_direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.calle_direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigo_postal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigo_postal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.colonia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.colonia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.municipio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.municipio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_actual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_actual)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.codigo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

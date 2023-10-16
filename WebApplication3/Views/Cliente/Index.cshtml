@@ -1,0 +1,154 @@
+﻿@model IPagedList<WebApplication3.Models.clientes>
+
+<br />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using PagedList;
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<h1 class="display-4">Clientes</h1>
+<br />
+
+<div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+    <button type="button" class="btn btn-outline-primary">
+        <a class="bi bi-plus-square-fill icon" href="@Url.Action("Create")"></a>
+    </button>
+</div>
+
+<br />
+<br />
+
+@using (Html.BeginForm("Index", "Cliente", FormMethod.Get))
+{
+    <div class="form-group">
+        <label for="searchString">Buscar:</label>
+        <input type="text" name="searchString" class="form-control" value="@ViewBag.CurrentFilter" />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Buscar</button>
+
+
+    <br />
+    <br />
+
+    <label for="pageSize">Mostrar por página:</label>
+    @Html.DropDownList("pageSize", new List<SelectListItem>
+    {
+        new SelectListItem { Text = "5", Value = "5" },
+        new SelectListItem { Text = "10", Value = "10" },
+        new SelectListItem { Text = "20", Value = "20" },
+        new SelectListItem { Text = "25", Value = "25" },
+        new SelectListItem { Text = "50", Value = "50" },
+        // Agrega más opciones según tus necesidades
+    }, new { onchange = "this.form.submit();" })
+
+
+}
+<br />
+
+<div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+    <button type="button" class="btn btn-outline-success">
+        <a class="bi bi-file-earmark-excel" href="@Url.Action("DescargarExcel")"></a>
+    </button>
+    <button type="button" class="btn btn-outline-danger">
+        <a class="bi bi-cloud-download " href="@Url.Action("DescargarRP")"></a>
+    </button>
+    <button type="button" class="btn btn-outline-warning">
+        <a class="bi bi-eye-fill " href="@Url.Action("VistaPreviaRP")"></a>
+    </button>
+</div>
+
+<br />
+<br />
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().dpi_clientes)
+            @Html.ActionLink(" ", "Index", new { orden = "dpi_asc" }, new { @class = "btn bi bi-arrow-bar-up icon" })
+            @Html.ActionLink(" ", "Index", new { orden = "dpi_desc" }, new { @class = " btn bi bi-arrow-bar-down icon" })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().nombre_completo)
+            @Html.ActionLink(" ", "Index", new { orden = "nombre_asc" }, new { @class = "btn bi bi-arrow-bar-up icon" })
+            @Html.ActionLink(" ", "Index", new { orden = "nombre_desc" }, new { @class = " btn bi bi-arrow-bar-down icon" })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().direccion)
+            @Html.ActionLink(" ", "Index", new { orden = "direccion_asc" }, new { @class = "btn bi bi-arrow-bar-up icon" })
+            @Html.ActionLink(" ", "Index", new { orden = "direccion_desc" }, new { @class = " btn bi bi-arrow-bar-down icon" })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().fecha_nacimiento)
+            @Html.ActionLink(" ", "Index", new { orden = "fecha_asc" }, new { @class = "btn bi bi-arrow-bar-up icon" })
+            @Html.ActionLink(" ", "Index", new { orden = "fecha_desc" }, new { @class = " btn bi bi-arrow-bar-down icon" })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().correo)
+            @Html.ActionLink(" ", "Index", new { orden = "correo_asc" }, new { @class = "btn bi bi-arrow-bar-up icon" })
+            @Html.ActionLink(" ", "Index", new { orden = "correo_desc" }, new { @class = " btn bi bi-arrow-bar-down icon" })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().telefono)
+            @Html.ActionLink(" ", "Index", new { orden = "telefono_asc" }, new { @class = "btn bi bi-arrow-bar-up icon" })
+            @Html.ActionLink(" ", "Index", new { orden = "telefono_desc" }, new { @class = " btn bi bi-arrow-bar-down icon" })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().estado_actual)
+            @Html.ActionLink(" ", "Index", new { orden = "estado_asc" }, new { @class = "btn bi bi-arrow-bar-up icon" })
+            @Html.ActionLink(" ", "Index", new { orden = "estado_desc" }, new { @class = " btn bi bi-arrow-bar-down icon" })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dpi_clientes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre_completo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_nacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado_actual)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.dpi_clientes }, new { @class = "btn btn-warning bi bi-pencil-fill" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.dpi_clientes }, new { @class = "btn btn-primary bi bi-list" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.dpi_clientes }, new { @class = "btn btn-danger bi bi-folder-minus" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<br />
+<br />
+<nav aria-label="Page navigation example">
+    @Html.PagedListPager(Model, i => Url.Action("Index", "vehiculo", new { i, search = Request.QueryString["searh"] }))
+</nav>
+
+
+<br />
+

@@ -1,0 +1,1072 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SQLTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="clases">
+          <Key>
+            <PropertyRef Name="id_clases" />
+          </Key>
+          <Property Name="id_clases" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="cliente_clases" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="hora_inicio" Type="time" Precision="7" Nullable="false" />
+          <Property Name="hora_final" Type="time" Precision="7" Nullable="false" />
+          <Property Name="contrato_clases" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="dpi_clientes" />
+          </Key>
+          <Property Name="dpi_clientes" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nombre_completo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefono" Type="int" Nullable="false" />
+          <Property Name="estado_actual" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contratos">
+          <Key>
+            <PropertyRef Name="numero_contrato" />
+          </Key>
+          <Property Name="numero_contrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numero_seciones" Type="int" Nullable="false" />
+          <Property Name="instructor_asignado" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cliente_contrato" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="vehiculo_clases" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="fecha_inicio" Type="date" Nullable="false" />
+          <Property Name="fecha_final" Type="date" Nullable="false" />
+          <Property Name="costo_total" Type="money" Nullable="false" />
+          <Property Name="estado_contrato" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="direcciones">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numero_casa" Type="int" Nullable="false" />
+          <Property Name="calle_direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ciudad" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="codigo_postal" Type="int" Nullable="false" />
+          <Property Name="colonia" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="departamento" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="municipio" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="estado_actual" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="operaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idModulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pagos">
+          <Key>
+            <PropertyRef Name="id_pagos" />
+          </Key>
+          <Property Name="id_pagos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_pago" Type="date" Nullable="false" />
+          <Property Name="nombre_pago" Type="int" Nullable="false" />
+          <Property Name="cliente_pago" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="monto" Type="int" Nullable="false" />
+          <Property Name="contrato_servicio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personal">
+          <Key>
+            <PropertyRef Name="dpi_empleado" />
+          </Key>
+          <Property Name="dpi_empleado" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="direccion_personal" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
+          <Property Name="feche_contratacion" Type="date" Nullable="false" />
+          <Property Name="fecha_baja" Type="date" Nullable="false" />
+          <Property Name="telefono" Type="int" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+          <Property Name="puesto_personal" Type="int" />
+          <Property Name="usuario_personal" Type="int" />
+        </EntityType>
+        <EntityType Name="puesto">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rol_operacion">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rolId" Type="int" />
+          <Property Name="operacionId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tipo_pago">
+          <Key>
+            <PropertyRef Name="id_tipo" />
+          </Key>
+          <Property Name="id_tipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_completo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="rolId" Type="int" />
+        </EntityType>
+        <EntityType Name="vehiculos">
+          <Key>
+            <PropertyRef Name="placas" />
+          </Key>
+          <Property Name="placas" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="marca" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="modelo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="año" Type="int" Nullable="false" />
+          <Property Name="fecha_compra" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__clases__contrato__3DDE0E16">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="clases" Type="Self.clases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="dpi_clientes" />
+            </Principal>
+            <Dependent Role="clases">
+              <PropertyRef Name="cliente_clases" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__clases__contrato__3ED2324F">
+          <End Role="contratos" Type="Self.contratos" Multiplicity="1" />
+          <End Role="clases" Type="Self.clases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contratos">
+              <PropertyRef Name="numero_contrato" />
+            </Principal>
+            <Dependent Role="clases">
+              <PropertyRef Name="contrato_clases" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__contratos__clien__3B01A16B">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="contratos" Type="Self.contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="dpi_clientes" />
+            </Principal>
+            <Dependent Role="contratos">
+              <PropertyRef Name="cliente_contrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__contratos__estad__391958F9">
+          <End Role="personal" Type="Self.personal" Multiplicity="1" />
+          <End Role="contratos" Type="Self.contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personal">
+              <PropertyRef Name="dpi_empleado" />
+            </Principal>
+            <Dependent Role="contratos">
+              <PropertyRef Name="instructor_asignado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__contratos__vehic__3A0D7D32">
+          <End Role="vehiculos" Type="Self.vehiculos" Multiplicity="1" />
+          <End Role="contratos" Type="Self.contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehiculos">
+              <PropertyRef Name="placas" />
+            </Principal>
+            <Dependent Role="contratos">
+              <PropertyRef Name="vehiculo_clases" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__operacion__idMod__2BBF5DDB">
+          <End Role="modulo" Type="Self.modulo" Multiplicity="1" />
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="operaciones">
+              <PropertyRef Name="idModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pagos__contrato___4396E76C">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="pagos" Type="Self.pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="dpi_clientes" />
+            </Principal>
+            <Dependent Role="pagos">
+              <PropertyRef Name="cliente_pago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pagos__contrato___457F2FDE">
+          <End Role="contratos" Type="Self.contratos" Multiplicity="1" />
+          <End Role="pagos" Type="Self.pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contratos">
+              <PropertyRef Name="numero_contrato" />
+            </Principal>
+            <Dependent Role="pagos">
+              <PropertyRef Name="contrato_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pagos__nombre_pa__448B0BA5">
+          <End Role="tipo_pago" Type="Self.tipo_pago" Multiplicity="1" />
+          <End Role="pagos" Type="Self.pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_pago">
+              <PropertyRef Name="id_tipo" />
+            </Principal>
+            <Dependent Role="pagos">
+              <PropertyRef Name="nombre_pago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__personal__direcc__3454A3DC">
+          <End Role="direcciones" Type="Self.direcciones" Multiplicity="1" />
+          <End Role="personal" Type="Self.personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="direcciones">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="personal">
+              <PropertyRef Name="direccion_personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__personal__puesto__363CEC4E">
+          <End Role="puesto" Type="Self.puesto" Multiplicity="0..1" />
+          <End Role="personal" Type="Self.personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="puesto">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="personal">
+              <PropertyRef Name="puesto_personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__personal__usuari__3548C815">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="personal" Type="Self.personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="personal">
+              <PropertyRef Name="usuario_personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__rol_opera__opera__2E9BCA86">
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operaciones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="operacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__rol_opera__rolId__2F8FEEBF">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="rolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__usuario__rolId__26FAA8BE">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="rolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SQLTestModelStoreContainer">
+          <EntitySet Name="clases" EntityType="Self.clases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contratos" EntityType="Self.contratos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="direcciones" EntityType="Self.direcciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="modulo" EntityType="Self.modulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="operaciones" EntityType="Self.operaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pagos" EntityType="Self.pagos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personal" EntityType="Self.personal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="puesto" EntityType="Self.puesto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rol_operacion" EntityType="Self.rol_operacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_pago" EntityType="Self.tipo_pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vehiculos" EntityType="Self.vehiculos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__clases__contrato__3DDE0E16" Association="Self.FK__clases__contrato__3DDE0E16">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="clases" EntitySet="clases" />
+          </AssociationSet>
+          <AssociationSet Name="FK__clases__contrato__3ED2324F" Association="Self.FK__clases__contrato__3ED2324F">
+            <End Role="contratos" EntitySet="contratos" />
+            <End Role="clases" EntitySet="clases" />
+          </AssociationSet>
+          <AssociationSet Name="FK__contratos__clien__3B01A16B" Association="Self.FK__contratos__clien__3B01A16B">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="contratos" EntitySet="contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__contratos__estad__391958F9" Association="Self.FK__contratos__estad__391958F9">
+            <End Role="personal" EntitySet="personal" />
+            <End Role="contratos" EntitySet="contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__contratos__vehic__3A0D7D32" Association="Self.FK__contratos__vehic__3A0D7D32">
+            <End Role="vehiculos" EntitySet="vehiculos" />
+            <End Role="contratos" EntitySet="contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__operacion__idMod__2BBF5DDB" Association="Self.FK__operacion__idMod__2BBF5DDB">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="operaciones" EntitySet="operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pagos__contrato___4396E76C" Association="Self.FK__pagos__contrato___4396E76C">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="pagos" EntitySet="pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pagos__contrato___457F2FDE" Association="Self.FK__pagos__contrato___457F2FDE">
+            <End Role="contratos" EntitySet="contratos" />
+            <End Role="pagos" EntitySet="pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pagos__nombre_pa__448B0BA5" Association="Self.FK__pagos__nombre_pa__448B0BA5">
+            <End Role="tipo_pago" EntitySet="tipo_pago" />
+            <End Role="pagos" EntitySet="pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__personal__direcc__3454A3DC" Association="Self.FK__personal__direcc__3454A3DC">
+            <End Role="direcciones" EntitySet="direcciones" />
+            <End Role="personal" EntitySet="personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__personal__puesto__363CEC4E" Association="Self.FK__personal__puesto__363CEC4E">
+            <End Role="puesto" EntitySet="puesto" />
+            <End Role="personal" EntitySet="personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__personal__usuari__3548C815" Association="Self.FK__personal__usuari__3548C815">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="personal" EntitySet="personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rol_opera__opera__2E9BCA86" Association="Self.FK__rol_opera__opera__2E9BCA86">
+            <End Role="operaciones" EntitySet="operaciones" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rol_opera__rolId__2F8FEEBF" Association="Self.FK__rol_opera__rolId__2F8FEEBF">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__usuario__rolId__26FAA8BE" Association="Self.FK__usuario__rolId__26FAA8BE">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SQLTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="clases">
+          <Key>
+            <PropertyRef Name="id_clases" />
+          </Key>
+          <Property Name="id_clases" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cliente_clases" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hora_inicio" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="hora_final" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="contrato_clases" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="clientes" Relationship="Self.FK__clases__contrato__3DDE0E16" FromRole="clases" ToRole="clientes" />
+          <NavigationProperty Name="contratos" Relationship="Self.FK__clases__contrato__3ED2324F" FromRole="clases" ToRole="contratos" />
+        </EntityType>
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="dpi_clientes" />
+          </Key>
+          <Property Name="dpi_clientes" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre_completo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="correo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="Int32" Nullable="false" />
+          <Property Name="estado_actual" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="clases" Relationship="Self.FK__clases__contrato__3DDE0E16" FromRole="clientes" ToRole="clases" />
+          <NavigationProperty Name="contratos" Relationship="Self.FK__contratos__clien__3B01A16B" FromRole="clientes" ToRole="contratos" />
+          <NavigationProperty Name="pagos" Relationship="Self.FK__pagos__contrato___4396E76C" FromRole="clientes" ToRole="pagos" />
+        </EntityType>
+        <EntityType Name="contratos">
+          <Key>
+            <PropertyRef Name="numero_contrato" />
+          </Key>
+          <Property Name="numero_contrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_seciones" Type="Int32" Nullable="false" />
+          <Property Name="instructor_asignado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cliente_contrato" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vehiculo_clases" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_final" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="costo_total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="estado_contrato" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="clases" Relationship="Self.FK__clases__contrato__3ED2324F" FromRole="contratos" ToRole="clases" />
+          <NavigationProperty Name="clientes" Relationship="Self.FK__contratos__clien__3B01A16B" FromRole="contratos" ToRole="clientes" />
+          <NavigationProperty Name="personal" Relationship="Self.FK__contratos__estad__391958F9" FromRole="contratos" ToRole="personal" />
+          <NavigationProperty Name="vehiculos" Relationship="Self.FK__contratos__vehic__3A0D7D32" FromRole="contratos" ToRole="vehiculos" />
+          <NavigationProperty Name="pagos" Relationship="Self.FK__pagos__contrato___457F2FDE" FromRole="contratos" ToRole="pagos" />
+        </EntityType>
+        <EntityType Name="direcciones">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_casa" Type="Int32" Nullable="false" />
+          <Property Name="calle_direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ciudad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codigo_postal" Type="Int32" Nullable="false" />
+          <Property Name="colonia" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="departamento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="municipio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado_actual" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="personal" Relationship="Self.FK__personal__direcc__3454A3DC" FromRole="direcciones" ToRole="personal" />
+        </EntityType>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="operaciones" Relationship="Self.FK__operacion__idMod__2BBF5DDB" FromRole="modulo" ToRole="operaciones" />
+        </EntityType>
+        <EntityType Name="operaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idModulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="modulo" Relationship="Self.FK__operacion__idMod__2BBF5DDB" FromRole="operaciones" ToRole="modulo" />
+          <NavigationProperty Name="rol_operacion" Relationship="Self.FK__rol_opera__opera__2E9BCA86" FromRole="operaciones" ToRole="rol_operacion" />
+        </EntityType>
+        <EntityType Name="pagos">
+          <Key>
+            <PropertyRef Name="id_pagos" />
+          </Key>
+          <Property Name="id_pagos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_pago" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nombre_pago" Type="Int32" Nullable="false" />
+          <Property Name="cliente_pago" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="monto" Type="Int32" Nullable="false" />
+          <Property Name="contrato_servicio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="clientes" Relationship="Self.FK__pagos__contrato___4396E76C" FromRole="pagos" ToRole="clientes" />
+          <NavigationProperty Name="contratos" Relationship="Self.FK__pagos__contrato___457F2FDE" FromRole="pagos" ToRole="contratos" />
+          <NavigationProperty Name="tipo_pago" Relationship="Self.FK__pagos__nombre_pa__448B0BA5" FromRole="pagos" ToRole="tipo_pago" />
+        </EntityType>
+        <EntityType Name="personal">
+          <Key>
+            <PropertyRef Name="dpi_empleado" />
+          </Key>
+          <Property Name="dpi_empleado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion_personal" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="feche_contratacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_baja" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="telefono" Type="Int32" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="puesto_personal" Type="Int32" />
+          <Property Name="usuario_personal" Type="Int32" />
+          <NavigationProperty Name="contratos" Relationship="Self.FK__contratos__estad__391958F9" FromRole="personal" ToRole="contratos" />
+          <NavigationProperty Name="direcciones" Relationship="Self.FK__personal__direcc__3454A3DC" FromRole="personal" ToRole="direcciones" />
+          <NavigationProperty Name="puesto" Relationship="Self.FK__personal__puesto__363CEC4E" FromRole="personal" ToRole="puesto" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK__personal__usuari__3548C815" FromRole="personal" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="puesto">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="personal" Relationship="Self.FK__personal__puesto__363CEC4E" FromRole="puesto" ToRole="personal" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="rol_operacion" Relationship="Self.FK__rol_opera__rolId__2F8FEEBF" FromRole="rol" ToRole="rol_operacion" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK__usuario__rolId__26FAA8BE" FromRole="rol" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="rol_operacion">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rolId" Type="Int32" />
+          <Property Name="operacionId" Type="Int32" />
+          <NavigationProperty Name="operaciones" Relationship="Self.FK__rol_opera__opera__2E9BCA86" FromRole="rol_operacion" ToRole="operaciones" />
+          <NavigationProperty Name="rol" Relationship="Self.FK__rol_opera__rolId__2F8FEEBF" FromRole="rol_operacion" ToRole="rol" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tipo_pago">
+          <Key>
+            <PropertyRef Name="id_tipo" />
+          </Key>
+          <Property Name="id_tipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="pagos" Relationship="Self.FK__pagos__nombre_pa__448B0BA5" FromRole="tipo_pago" ToRole="pagos" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_completo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rolId" Type="Int32" />
+          <NavigationProperty Name="personal" Relationship="Self.FK__personal__usuari__3548C815" FromRole="usuario" ToRole="personal" />
+          <NavigationProperty Name="rol" Relationship="Self.FK__usuario__rolId__26FAA8BE" FromRole="usuario" ToRole="rol" />
+        </EntityType>
+        <EntityType Name="vehiculos">
+          <Key>
+            <PropertyRef Name="placas" />
+          </Key>
+          <Property Name="placas" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modelo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="año" Type="Int32" Nullable="false" />
+          <Property Name="fecha_compra" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="contratos" Relationship="Self.FK__contratos__vehic__3A0D7D32" FromRole="vehiculos" ToRole="contratos" />
+        </EntityType>
+        <Association Name="FK__clases__contrato__3DDE0E16">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="clases" Type="Self.clases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="dpi_clientes" />
+            </Principal>
+            <Dependent Role="clases">
+              <PropertyRef Name="cliente_clases" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__clases__contrato__3ED2324F">
+          <End Role="contratos" Type="Self.contratos" Multiplicity="1" />
+          <End Role="clases" Type="Self.clases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contratos">
+              <PropertyRef Name="numero_contrato" />
+            </Principal>
+            <Dependent Role="clases">
+              <PropertyRef Name="contrato_clases" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__contratos__clien__3B01A16B">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="contratos" Type="Self.contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="dpi_clientes" />
+            </Principal>
+            <Dependent Role="contratos">
+              <PropertyRef Name="cliente_contrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pagos__contrato___4396E76C">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="pagos" Type="Self.pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="dpi_clientes" />
+            </Principal>
+            <Dependent Role="pagos">
+              <PropertyRef Name="cliente_pago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__contratos__estad__391958F9">
+          <End Role="personal" Type="Self.personal" Multiplicity="1" />
+          <End Role="contratos" Type="Self.contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personal">
+              <PropertyRef Name="dpi_empleado" />
+            </Principal>
+            <Dependent Role="contratos">
+              <PropertyRef Name="instructor_asignado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__contratos__vehic__3A0D7D32">
+          <End Role="vehiculos" Type="Self.vehiculos" Multiplicity="1" />
+          <End Role="contratos" Type="Self.contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehiculos">
+              <PropertyRef Name="placas" />
+            </Principal>
+            <Dependent Role="contratos">
+              <PropertyRef Name="vehiculo_clases" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pagos__contrato___457F2FDE">
+          <End Role="contratos" Type="Self.contratos" Multiplicity="1" />
+          <End Role="pagos" Type="Self.pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contratos">
+              <PropertyRef Name="numero_contrato" />
+            </Principal>
+            <Dependent Role="pagos">
+              <PropertyRef Name="contrato_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__personal__direcc__3454A3DC">
+          <End Role="direcciones" Type="Self.direcciones" Multiplicity="1" />
+          <End Role="personal" Type="Self.personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="direcciones">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="personal">
+              <PropertyRef Name="direccion_personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__operacion__idMod__2BBF5DDB">
+          <End Role="modulo" Type="Self.modulo" Multiplicity="1" />
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="operaciones">
+              <PropertyRef Name="idModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__rol_opera__opera__2E9BCA86">
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operaciones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="operacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pagos__nombre_pa__448B0BA5">
+          <End Role="tipo_pago" Type="Self.tipo_pago" Multiplicity="1" />
+          <End Role="pagos" Type="Self.pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_pago">
+              <PropertyRef Name="id_tipo" />
+            </Principal>
+            <Dependent Role="pagos">
+              <PropertyRef Name="nombre_pago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__personal__puesto__363CEC4E">
+          <End Role="puesto" Type="Self.puesto" Multiplicity="0..1" />
+          <End Role="personal" Type="Self.personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="puesto">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="personal">
+              <PropertyRef Name="puesto_personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__personal__usuari__3548C815">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="personal" Type="Self.personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="personal">
+              <PropertyRef Name="usuario_personal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__rol_opera__rolId__2F8FEEBF">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="rolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__usuario__rolId__26FAA8BE">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="rolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SQLModels" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="clases" EntityType="Self.clases" />
+          <EntitySet Name="clientes" EntityType="Self.clientes" />
+          <EntitySet Name="contratos" EntityType="Self.contratos" />
+          <EntitySet Name="direcciones" EntityType="Self.direcciones" />
+          <EntitySet Name="modulo" EntityType="Self.modulo" />
+          <EntitySet Name="operaciones" EntityType="Self.operaciones" />
+          <EntitySet Name="pagos" EntityType="Self.pagos" />
+          <EntitySet Name="personal" EntityType="Self.personal" />
+          <EntitySet Name="puesto" EntityType="Self.puesto" />
+          <EntitySet Name="rol" EntityType="Self.rol" />
+          <EntitySet Name="rol_operacion" EntityType="Self.rol_operacion" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tipo_pago" EntityType="Self.tipo_pago" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <EntitySet Name="vehiculos" EntityType="Self.vehiculos" />
+          <AssociationSet Name="FK__clases__contrato__3DDE0E16" Association="Self.FK__clases__contrato__3DDE0E16">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="clases" EntitySet="clases" />
+          </AssociationSet>
+          <AssociationSet Name="FK__clases__contrato__3ED2324F" Association="Self.FK__clases__contrato__3ED2324F">
+            <End Role="contratos" EntitySet="contratos" />
+            <End Role="clases" EntitySet="clases" />
+          </AssociationSet>
+          <AssociationSet Name="FK__contratos__clien__3B01A16B" Association="Self.FK__contratos__clien__3B01A16B">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="contratos" EntitySet="contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pagos__contrato___4396E76C" Association="Self.FK__pagos__contrato___4396E76C">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="pagos" EntitySet="pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__contratos__estad__391958F9" Association="Self.FK__contratos__estad__391958F9">
+            <End Role="personal" EntitySet="personal" />
+            <End Role="contratos" EntitySet="contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__contratos__vehic__3A0D7D32" Association="Self.FK__contratos__vehic__3A0D7D32">
+            <End Role="vehiculos" EntitySet="vehiculos" />
+            <End Role="contratos" EntitySet="contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pagos__contrato___457F2FDE" Association="Self.FK__pagos__contrato___457F2FDE">
+            <End Role="contratos" EntitySet="contratos" />
+            <End Role="pagos" EntitySet="pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__personal__direcc__3454A3DC" Association="Self.FK__personal__direcc__3454A3DC">
+            <End Role="direcciones" EntitySet="direcciones" />
+            <End Role="personal" EntitySet="personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__operacion__idMod__2BBF5DDB" Association="Self.FK__operacion__idMod__2BBF5DDB">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="operaciones" EntitySet="operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rol_opera__opera__2E9BCA86" Association="Self.FK__rol_opera__opera__2E9BCA86">
+            <End Role="operaciones" EntitySet="operaciones" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pagos__nombre_pa__448B0BA5" Association="Self.FK__pagos__nombre_pa__448B0BA5">
+            <End Role="tipo_pago" EntitySet="tipo_pago" />
+            <End Role="pagos" EntitySet="pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__personal__puesto__363CEC4E" Association="Self.FK__personal__puesto__363CEC4E">
+            <End Role="puesto" EntitySet="puesto" />
+            <End Role="personal" EntitySet="personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__personal__usuari__3548C815" Association="Self.FK__personal__usuari__3548C815">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="personal" EntitySet="personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rol_opera__rolId__2F8FEEBF" Association="Self.FK__rol_opera__rolId__2F8FEEBF">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__usuario__rolId__26FAA8BE" Association="Self.FK__usuario__rolId__26FAA8BE">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SQLTestModelStoreContainer" CdmEntityContainer="SQLModels">
+          <EntitySetMapping Name="clases">
+            <EntityTypeMapping TypeName="SQLTestModel.clases">
+              <MappingFragment StoreEntitySet="clases">
+                <ScalarProperty Name="id_clases" ColumnName="id_clases" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="cliente_clases" ColumnName="cliente_clases" />
+                <ScalarProperty Name="hora_inicio" ColumnName="hora_inicio" />
+                <ScalarProperty Name="hora_final" ColumnName="hora_final" />
+                <ScalarProperty Name="contrato_clases" ColumnName="contrato_clases" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="SQLTestModel.clientes">
+              <MappingFragment StoreEntitySet="clientes">
+                <ScalarProperty Name="dpi_clientes" ColumnName="dpi_clientes" />
+                <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="estado_actual" ColumnName="estado_actual" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contratos">
+            <EntityTypeMapping TypeName="SQLTestModel.contratos">
+              <MappingFragment StoreEntitySet="contratos">
+                <ScalarProperty Name="numero_contrato" ColumnName="numero_contrato" />
+                <ScalarProperty Name="numero_seciones" ColumnName="numero_seciones" />
+                <ScalarProperty Name="instructor_asignado" ColumnName="instructor_asignado" />
+                <ScalarProperty Name="cliente_contrato" ColumnName="cliente_contrato" />
+                <ScalarProperty Name="vehiculo_clases" ColumnName="vehiculo_clases" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_final" ColumnName="fecha_final" />
+                <ScalarProperty Name="costo_total" ColumnName="costo_total" />
+                <ScalarProperty Name="estado_contrato" ColumnName="estado_contrato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="direcciones">
+            <EntityTypeMapping TypeName="SQLTestModel.direcciones">
+              <MappingFragment StoreEntitySet="direcciones">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="numero_casa" ColumnName="numero_casa" />
+                <ScalarProperty Name="calle_direccion" ColumnName="calle_direccion" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
+                <ScalarProperty Name="colonia" ColumnName="colonia" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="municipio" ColumnName="municipio" />
+                <ScalarProperty Name="estado_actual" ColumnName="estado_actual" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modulo">
+            <EntityTypeMapping TypeName="SQLTestModel.modulo">
+              <MappingFragment StoreEntitySet="modulo">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="operaciones">
+            <EntityTypeMapping TypeName="SQLTestModel.operaciones">
+              <MappingFragment StoreEntitySet="operaciones">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pagos">
+            <EntityTypeMapping TypeName="SQLTestModel.pagos">
+              <MappingFragment StoreEntitySet="pagos">
+                <ScalarProperty Name="id_pagos" ColumnName="id_pagos" />
+                <ScalarProperty Name="fecha_pago" ColumnName="fecha_pago" />
+                <ScalarProperty Name="nombre_pago" ColumnName="nombre_pago" />
+                <ScalarProperty Name="cliente_pago" ColumnName="cliente_pago" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="contrato_servicio" ColumnName="contrato_servicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personal">
+            <EntityTypeMapping TypeName="SQLTestModel.personal">
+              <MappingFragment StoreEntitySet="personal">
+                <ScalarProperty Name="dpi_empleado" ColumnName="dpi_empleado" />
+                <ScalarProperty Name="direccion_personal" ColumnName="direccion_personal" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="feche_contratacion" ColumnName="feche_contratacion" />
+                <ScalarProperty Name="fecha_baja" ColumnName="fecha_baja" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="puesto_personal" ColumnName="puesto_personal" />
+                <ScalarProperty Name="usuario_personal" ColumnName="usuario_personal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="puesto">
+            <EntityTypeMapping TypeName="SQLTestModel.puesto">
+              <MappingFragment StoreEntitySet="puesto">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol">
+            <EntityTypeMapping TypeName="SQLTestModel.rol">
+              <MappingFragment StoreEntitySet="rol">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol_operacion">
+            <EntityTypeMapping TypeName="SQLTestModel.rol_operacion">
+              <MappingFragment StoreEntitySet="rol_operacion">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="rolId" ColumnName="rolId" />
+                <ScalarProperty Name="operacionId" ColumnName="operacionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SQLTestModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_pago">
+            <EntityTypeMapping TypeName="SQLTestModel.tipo_pago">
+              <MappingFragment StoreEntitySet="tipo_pago">
+                <ScalarProperty Name="id_tipo" ColumnName="id_tipo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="SQLTestModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="rolId" ColumnName="rolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vehiculos">
+            <EntityTypeMapping TypeName="SQLTestModel.vehiculos">
+              <MappingFragment StoreEntitySet="vehiculos">
+                <ScalarProperty Name="placas" ColumnName="placas" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="año" ColumnName="año" />
+                <ScalarProperty Name="fecha_compra" ColumnName="fecha_compra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
