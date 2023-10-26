@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using OfficeOpenXml;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -218,7 +219,7 @@ namespace WebApplication3.Controllers
         public ActionResult ReporteSimple()
         {
 
-            return View(DBS.clases.ToList());
+            return View(DBS.clientes.ToList());
         }
 
         public ActionResult DescargarRP()
@@ -251,36 +252,33 @@ namespace WebApplication3.Controllers
 
         }
 
-        public ActionResult DescargarExcel()
+        public ActionResult ExportToExcel()
         {
-            ReportDocument report = new ReportDocument();
+            var data = DBS.clientes.ToList(); // Reemplaza YourTable con el nombre de tu tabla en la base de datos.
 
-            report.Load(Path.Combine(Server.MapPath("~/Reportes"), "ClienteReporte.rpt"));
-
-            report.SetDataSource(DBS.vehiculos.ToList());
-
-            Response.Buffer = false;
-            Response.ClearContent();
-            Response.ClearHeaders();
-
-            try
+            using (ExcelPackage package = new ExcelPackage())
             {
+                var worksheet = package.Workbook.Worksheets.Add("ReporteData");
 
-                Stream stream = report.ExportToStream(ExportFormatType.Excel);
-                stream.Seek(0, SeekOrigin.Begin);
-                return File(stream, "application/vnd.ms-excel", "empleadoRpt.xls");
+                // Llena la hoja de Excel con los datos de la base de datos.
+                worksheet.Cells["A1"].LoadFromCollection(data, true);
 
-            }
-            catch (Exception ex)
-            {
-                return Content($"Error: {ex.Message}");
+                // Configura el tipo de contenido y el nombre del archivo.
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", "attachment; filename=ReporteData.xlsx");
+
+                // Escribe el archivo Excel en la respuesta de la solicitud.
+                Response.BinaryWrite(package.GetAsByteArray());
+                Response.End();
             }
 
+            return View();
         }
 
 
 
-        public ActionResult VistaPreviaRP()
+
+    public ActionResult VistaPreviaRP()
         {
             // Lógica para generar el informe con Crystal Reports
             ReportDocument reportDocument = new ReportDocument();

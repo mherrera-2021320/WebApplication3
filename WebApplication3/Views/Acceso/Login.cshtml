@@ -1,39 +1,77 @@
 ﻿
 @{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    Layout = null;
 }
 
-<link href="~/EstiloNavbar/styles.css" rel="stylesheet" />
+<!DOCTYPE html>
 
-<h2>Login</h2>
-
-<div class="row">
-    <div class="alert-danger">
-        @ViewBag.Error
-    </div>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="~/EstiloNavbar/Login.css" rel="stylesheet" />
+</head>
+<body>
 
     <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-    <form action="@Url.Content("~/Acceso/Login")" method="post">
-        <div class="form-group">
-            <label>Usuario</label>
-            <input type="text" name="User" />
+
+
+    <div class="container login-container">
+        <div class="row">
+            <div class="alert-danger">
+                @ViewBag.Error
+            </div>
+            <div class="col-md-6 ads">
+                <h2><span id="fl">Company</span><span id="sl">Name</span></h2>
+                <img src="~/EstiloNavbar/descarga.png" alt="Alternate Text" />
+            </div>
+            <div class="col-md-6 login-form">
+
+                <h1>Ingresa tus Credenciales </h1>
+                <div class="panel-body">
+
+                    <form action="@Url.Content("~/Acceso/Login")" name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="post">
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="user" type="text" class="form-control" name="User" value="" placeholder="Usuario">
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="password" type="password" class="form-control passw" name="Pass" placeholder="Contraseña">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12 controls">
+                                <button type="submit" value="Entrar" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Log in</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
         </div>
-        <br />
-        <div class="form-group">
-            <label>Contraseña </label>
-            <input type="password" name="Pass" class="passw" id="Input" />
-
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Entrar" class="btn btn-success" />
-        </div>
-    </form>
+    </div>
 
 
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="~/EstiloNavbar/login.js"></script>
 
-    <script src="~/EstiloNavbar/script.js"></script>
+</body>
+</html>
 
-</div>
 
+
+
+<div id="particles"></div>

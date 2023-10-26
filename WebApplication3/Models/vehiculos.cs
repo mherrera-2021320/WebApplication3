@@ -17,7 +17,7 @@ namespace WebApplication3.Models
         public string marca { get; set; }
         public string modelo { get; set; }
         public int año { get; set; }
-
+            
         public System.DateTime fecha_compra { get; set; }
     
         public virtual ICollection<contratos> contratos { get; set; }

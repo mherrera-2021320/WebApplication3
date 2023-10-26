@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -15,149 +14,85 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="~/EstiloNavbar/styles.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
-
+    @Styles.Render("~/bundles/modernizr")
 </head>
 <body>
 
 
-    <nav class="sidebar close">
+    @Html.Partial("Navbar")
+
+
+    <nav class="sidebar">
+
         <header>
-            <div class="image-text">
-
-                <div class="text headeer-text">
-                    <span class="name">Proyecto SQL</span>
-                    <span class="profesion"> Developer</span>
-                </div>
+            <div class="img-text">
+                <span class="image">
+                    <img src="~/EstiloNavbar/descarga.png" alt="logo" />
+                </span>
             </div>
-
-            <i class='bx bx-list-ul toggle'></i>
-
         </header>
 
         <br />
-        <br />
+
         <div class="menu-bar">
             <div class="menu">
-                <ul class="menu-link">
-                    <li>
-                        <a>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
                             <i class='bx bx-home-alt icon'></i>
-                            <span class="text nav-text">
-                                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "text nav-text" })
-                            </span>
+                            <span class="text nav-text"> @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "text nav-text" }) </span>
+
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a>
+                        <a href="#">
                             <i class='bx bxs-car-garage icon'></i>
-                            <span class="text nav-text">
-                                @Html.ActionLink("Vehiculos", "Index", "Vehiculo", new { area = "" }, new { @class = "text nav-text" })
-                            </span>
+                            <span class="text nav-text"> @Html.ActionLink("Vehiculos", "Index", "Vehiculo", new { area = "" }, new { @class = "text nav-text" }) </span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a>
+                        <a href="#">
                             <i class='bx bx-male-female icon'></i>
-                            <span class="text nav-text">
-                                @Html.ActionLink("Clientes", "Index", "Cliente", new { area = "" }, new { @class = "text nav-text" })
-                            </span>
+                            <span class="text nav-text"> @Html.ActionLink("Clientes", "Index", "Cliente", new { area = "" }, new { @class = "text nav-text" }) </span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a>
-                            <i class='bx bx-purchase-tag-alt icon'></i>
-                            <span class="text nav-text">
-                                @Html.ActionLink("Direcciones", "Index", "Direccion", new { area = "" }, new { @class = "text nav-text" })
-                            </span>
+                        <a href="#">
+                            <i class='bx bx-directions icon'></i>
+                            <span class="text nav-text"> @Html.ActionLink("Direcciones", "Index", "Direccion", new { area = "" }, new { @class = "text nav-text" }) </span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a>
-                            <i class='bx bx-street-view icon'></i>
-                            <span class="text nav-text">
-                                @Html.ActionLink("Personal", "Index", "Personal", new { area = "" }, new { @class = "text nav-text" })
-                            </span>
+                        <a href="#">
+                            <i class='bx bxs-wallet icon'></i>
+                            <span class="text nav-text"> @Html.ActionLink("Pagos", "Index", "Pago", new { area = "" }, new { @class = "text nav-text" }) </span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a>
-                            <i class='bx bx-book-content icon'></i>
-                            <span class="text nav-text">
-                                @Html.ActionLink("Contratos", "Index", "Contrato", new { area = "" }, new { @class = "text nav-text" })
-                            </span>
+                        <a href="#">
+                            <i class='bx bxs-user-voice icon'></i>
+                            <span class="text nav-text"> @Html.ActionLink("Personal", "Index", "Personal", new { area = "" }, new { @class = "text nav-text" }) </span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a>
+                        <a href="#">
                             <i class='bx bxs-graduation icon'></i>
-                            <span class="text nav-text">
-                                @Html.ActionLink("Clases", "Index", "Clase", new { area = "" }, new { @class = "text nav-text" })
-                            </span>
+                            <span class="text nav-text"> @Html.ActionLink("Clases", "Index", "Clase", new { area = "" }, new { @class = "text nav-text" }) </span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a>
-                            <i class='bx bx-money icon'></i>
-                            <span class="text nav-text">
-                                @Html.ActionLink("Pagos", "Index", "Pago", new { area = "" }, new { @class = "text nav-text" })
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a>
-                            <i class="bi bi-key-fill icon"></i>
-                            <span class="text nav-text">
-                                @Html.ActionLink("Permisos", "Index", "Perfil", new { area = "" }, new { @class = "text nav-text" })
-                            </span>
-                        </a>
-                    </li>
-
-
-
-
-                </ul>
-            </div>
-
-            <div class="bottom-content">
-                <ul>
-                    <li class="">
                         <a href="#">
-                            <i class='bx bxs-user-circle icon'></i>
-                            <span class="text nav-text">
-                                @Html.ActionLink("Perfil Usuario", "Index", "Perfil", new { area = "" }, new { @class = "text nav-text" })
-                            </span>
-                        </a>
-                    </li>
-
-                    <li class=" nav-link">
-                        <a href="#">
-                            <i class='bx bx-log-out icon'></i>
-                            <span class="text nav-text">
-                                @Html.ActionLink("Cerrar Secion", "Logout", "Cerrar", new { area = "" }, new { @class = "text nav-text" })
-                            </span>
+                            <i class='bx bx-cabinet icon'></i>
+                            <span class="text nav-text"> @Html.ActionLink("Contratos", "Index", "Contrato", new { area = "" }, new { @class = "text nav-text" }) </span>
                         </a>
                     </li>
                 </ul>
-               
 
-                @*<li class="mode">
-                        <div class="moon-moon">
-                            <i class='bx bx-moon icon moon'></i>
-                            <i class='bx bxs-moon icon moons'></i>
-                        </div>
-
-                        <span class="mode-text text"> Modo Oscuro </span>
-
-                        <diAv class="toggle-switch">
-                            <span class="switch"></span>
-                        </div>
-                    </li>*@
             </div>
 
         </div>
+
     </nav>
-
-
 
 
 

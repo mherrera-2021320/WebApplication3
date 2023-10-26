@@ -1,8 +1,12 @@
-﻿using PagedList;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using OfficeOpenXml;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -116,7 +120,7 @@ namespace WebApplication3.Controllers
             if (ModelState.IsValid)
             {
                 db.vehiculos.Add(vehiculos);
-                db.SaveChanges();
+                    db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -178,6 +182,102 @@ namespace WebApplication3.Controllers
             db.vehiculos.Remove(vehiculos);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+
+
+        SQLModels DBS = new SQLModels();
+
+        public ActionResult ReporteSimple()
+        {
+
+            return View(DBS.vehiculos.ToList());
+        }
+
+        public ActionResult DescargarRP()
+        {
+            ReportDocument report = new ReportDocument();
+
+            report.Load(Path.Combine(Server.MapPath("~/Reportes"), "VehiculoReporte.rpt"));
+
+            // Conecto los datos 
+            report.SetDataSource(DBS.clientes.ToList());
+
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+
+            //Cadena con los datos y el Archivo a reportar/Impriminr
+            try
+            {
+                Stream stream = report.ExportToStream(ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", "ListaVehiculos.pdf");
+            }
+            catch (Exception ex)
+            {
+                // Puedes registrar la excepción o devolver un mensaje de error personalizado
+                return Content($"Error: {ex.Message}");
+            }
+
+        }
+
+        public ActionResult ExportToExcel()
+        {
+            var data = DBS.vehiculos.ToList(); // Reemplaza YourTable con el nombre de tu tabla en la base de datos.
+
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                var worksheet = package.Workbook.Worksheets.Add("Vehiculos");
+
+                // Llena la hoja de Excel con los datos de la base de datos.
+                worksheet.Cells["A1"].LoadFromCollection(data, true);
+
+                // Configura el tipo de contenido y el nombre del archivo.
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", "attachment; filename=ReporteData.xlsx");
+
+                // Escribe el archivo Excel en la respuesta de la solicitud.
+                Response.BinaryWrite(package.GetAsByteArray());
+                Response.End();
+            }
+
+            return View();
+        }
+
+
+
+
+        public ActionResult VistaPreviaRP()
+        {
+            // Lógica para generar el informe con Crystal Reports
+            ReportDocument reportDocument = new ReportDocument();
+            reportDocument.Load(Path.Combine(Server.MapPath("~/Reportes"), "VehiculoReporte.rpt")); ; // Reemplaza la ruta y nombre del informe
+
+            // Configurar los datos del informe (reemplaza "Model" con tus datos reales)
+            reportDocument.SetDataSource(DBS.clientes.ToList()); ;
+
+            // Configurar el formato de exportación (PDF en este caso)
+            Stream stream = reportDocument.ExportToStream(ExportFormatType.PortableDocFormat);
+            stream.Seek(0, SeekOrigin.Begin);
+
+            ContentResult contentResult = new ContentResult
+            {
+                Content = Convert.ToBase64String(ReadStream(stream)),
+                ContentType = "application/pdf"
+            };
+
+            // Devolver el archivo PDF al navegador
+            return PartialView("_MostrarPDF", contentResult);
+        }
+
+        private byte[] ReadStream(Stream stream)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                stream.CopyTo(memoryStream);
+                return memoryStream.ToArray();
+            }
         }
 
         protected override void Dispose(bool disposing)

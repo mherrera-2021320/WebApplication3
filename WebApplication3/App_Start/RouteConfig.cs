@@ -18,6 +18,13 @@ namespace WebApplication3
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "ExportToExcel",
+                url: "Report/ExportToExcel",
+                defaults: new { controller = "Report", action = "ExportToExcel" }
+            );
+
         }
     }
 }
